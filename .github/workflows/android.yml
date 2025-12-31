@@ -28,12 +28,14 @@ jobs:
           libffi-dev libssl-dev
 
     - name: Install Android SDK Command Line Tools
-      run: |
-        mkdir -p $HOME/android-sdk/cmdline-tools
-        cd $HOME/android-sdk
-        wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
-        unzip commandlinetools-linux-11076708_latest.zip
-        mv cmdline-tools cmdline-tools/latest
+      - name: Install Android SDK Command Line Tools
+        run: |
+           mkdir -p $HOME/android-sdk/cmdline-tools/latest
+           cd $HOME/android-sdk
+           wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+           unzip commandlinetools-linux-11076708_latest.zip
+           mv cmdline-tools/* cmdline-tools/latest/
+           rm -rf cmdline-tools
 
     - name: Set Android SDK environment
       run: |
