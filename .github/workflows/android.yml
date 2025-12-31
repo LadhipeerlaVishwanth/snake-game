@@ -28,7 +28,6 @@ jobs:
           libffi-dev libssl-dev
 
     - name: Install Android SDK Command Line Tools
-      - name: Install Android SDK Command Line Tools
         run: |
            mkdir -p $HOME/android-sdk/cmdline-tools/latest
            cd $HOME/android-sdk
