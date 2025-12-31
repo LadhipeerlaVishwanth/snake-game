@@ -27,10 +27,15 @@ jobs:
           libgl1-mesa-dev libgles2-mesa-dev \
           libffi-dev libssl-dev
 
-    - name: Install Buildozer
+    - name: Install Buildozer & python-for-android
       run: |
         pip install --upgrade pip
         pip install buildozer==1.5.0 python-for-android==2023.09.16 "cython<3.0"
+
+    - name: Install Android SDK Build Tools (aidl fix)
+      run: |
+        yes | sdkmanager --licenses
+        sdkmanager "platform-tools" "build-tools;33.0.2"
 
     - name: Build APK
       run: |
